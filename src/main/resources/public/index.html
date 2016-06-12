@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Fresh Innovate- Winner of Law For Good Hackathon</title>    
+    <meta name="description" content="Fresh Innovate- Winner of Law For Good Hackathon" />
+    <meta name="author" content="Amine Benhallouk" />
+</head>
+
+<body class="impress-not-supported">
+  
+  <div class="data">
+    Loading ...
+  </div>
+  
+  
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"   
+    integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   
+    crossorigin="anonymous">
+  </script>
+  <script>
+    
+    
+    $.ajax({url: "/api/v1/" })
+    .done(function(data) {
+      
+      var message = ""
+      
+      $.each(data, function() {
+        message+="<p>The book id is: "+
+        this.id+"<br>"+"The title is: "
+        +this.title+ "<br>"+"The author is: "
+        +this.author+"<br>"+"The category is: "+
+        this.category+"</p>";
+      });
+      
+      $('div.data').html(message);
+      
+    });
+  
+  
+  
+    
+  </script>
+</body>
+</html>
