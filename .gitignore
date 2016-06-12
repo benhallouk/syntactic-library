@@ -1,15 +1,3 @@
-Skip to content
-Personal Open source Business Explore
-Sign upSign inPricingBlogSupport
-This repository
-Search
- Watch 857  Star 5,824  Fork 5,778 spring-projects/spring-boot
- Code  Issues 507  Pull requests 52  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathspring-boot/.gitignore
-c66da65  2 days ago
-@philwebb philwebb Refine ApplicationHome detection logic
-5 contributors @dsyer @philwebb @gregturn @isopov @wilkinsona
-RawBlameHistory     39 lines (38 sloc)  369 Bytes
 .gradle
 *.sw?
 .#*
