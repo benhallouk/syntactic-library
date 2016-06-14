@@ -1,0 +1,14 @@
+<h1>Items ({{todoCount}})</h1>
+<ul>
+    <li *ngFor="let item of items" [class.selected]="item == selectedItem">
+        <a href="javascript:void(0)" (click)="select(item)">
+            {{item.name}}
+            <span [ngSwitch]="item.done">
+                <template [ngSwitchWhen]="true">[Yes]</template>
+                <template [ngSwitchWhen]="false">[No]</template>
+            </span>
+        </a>
+    </li>
+</ul>
+
+<item *ngIf="selectedItem" [item]="selectedItem" (statusChanged)="calculateTodoCount()"></item>

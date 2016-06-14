@@ -39,9 +39,6 @@ transaction-logs
 node_modules
 npm-debug.log
 typings
-src/main/resources/public/app/*.js
-src/main/resources/public/app/*/*.js
-src/main/resources/public/app/*.map
-src/main/resources/public/app/*/*.map
+src/main/resources/public
 .sass-cache
 .vscode
