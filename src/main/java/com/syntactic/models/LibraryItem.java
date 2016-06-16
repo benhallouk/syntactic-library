@@ -1,6 +1,7 @@
 package com.syntactic.models;
 
 import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
