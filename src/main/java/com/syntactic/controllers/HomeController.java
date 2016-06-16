@@ -16,7 +16,7 @@ public class HomeController
     @Autowired
     LibraryItemService libraryItemService;
 
-    @RequestMapping("/")
+    @RequestMapping("/items")
     public List<LibraryItem> Index()
     {
         return libraryItemService.GetAll();
