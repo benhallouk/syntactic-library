@@ -1,4 +1,7 @@
 <h1>Items ({{todoCount}})</h1>
+
+<input type="text" [(ngModel)]="newItem.name" /> <button (click)="add(newItem)">OK</button>
+
 <ul>
     <li *ngFor="let item of items" [class.selected]="item == selectedItem">
         <a href="javascript:void(0)" (click)="select(item)">

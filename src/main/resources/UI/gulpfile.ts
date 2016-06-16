@@ -12,7 +12,7 @@ const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 
 gulp.task('clean', (cb) => {
-    return del(["../public"], cb);
+    return del(["../../../../target/classes/public"], cb);
 });
 
 gulp.task('tslint', () => {
@@ -27,7 +27,7 @@ gulp.task("compile", ["tslint"], () => {
         .pipe(tsc(tsProject));
     return tsResult.js
         .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("../public"));
+        .pipe(gulp.dest("../../../../target/classes/public"));
 });
 
 gulp.task('sass', function () {
@@ -40,7 +40,7 @@ gulp.task('sass', function () {
 
 gulp.task("resources", () => {
     return gulp.src(["src/**/*", "!**/*.ts", "!**/*.scss"])
-        .pipe(gulp.dest("../public"));
+        .pipe(gulp.dest("../../../../target/classes/public"));
 });
 
 gulp.task("libs", () => {
@@ -53,9 +53,12 @@ gulp.task("libs", () => {
             'zone.js/dist/**',
             '@angular/**'
         ], {cwd: "node_modules/**"})
-        .pipe(gulp.dest("../public/lib"));
+        .pipe(gulp.dest("../../../../target/classes/public/lib"));
 });
 
+gulp.task('reloadBrowserSync', function () {
+    reload();
+});
 
 gulp.task('browserSync', function () {
     browserSync.init({
@@ -76,17 +79,14 @@ gulp.task('browserSync', function () {
 
 	//gulp.watch('../../../../target/**/*').on("change", debounce(reload, 2000));
 
-    gulp.watch(["src/**/*.ts"], ['compile']).on('change', function (e) {
+    gulp.watch(["src/**/*.ts"], ['compile', 'reloadBrowserSync']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
-        reload();
     });
-    gulp.watch(["src/**/*.html", "src/**/*.css"], ['resources']).on('change', function (e) {
+    gulp.watch(["src/**/*.html", "src/**/*.css"], ['resources', 'reloadBrowserSync']).on('change', function (e) {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
-        reload();
     });
-    gulp.watch('src/**/*.scss', ['sass', 'resources'], function(e){
+    gulp.watch('src/**/*.scss', ['sass', 'resources', 'reloadBrowserSync'], function(e){
         console.log('Sass file ' + e.path + ' has been changed. Updating.');
-        reload();
     });
 });
 
