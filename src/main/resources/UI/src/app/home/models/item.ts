@@ -1,9 +1,7 @@
 export class Item {
-
-    constructor(public name:string, public done:boolean) {
+    constructor(public id:number, public title:string, public author:string, public category:string) {
     }
 
     toggleDone() {
-        this.done = !this.done;
     }
 }

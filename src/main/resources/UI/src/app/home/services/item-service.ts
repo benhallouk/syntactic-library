@@ -1,23 +1,28 @@
 import {Injectable} from "@angular/core";
+import { Headers, Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
 import {Item} from "../models/item";
 
 @Injectable()
 export class ItemService {
+    private itemsUrl = '/api/v1/items';
 
-    private items:Array<Item> = [
-        new Item("Item 1", false),
-        new Item("Item 2", false),
-        new Item("Item 3", false),
-        new Item("Item 4", false),
-        new Item("Item 5", false)
-    ];
+    constructor(private http: Http) { }
 
-    getItems():Array<Item> {
-        return this.items;
+    getItems(): Promise<Item[]> {
+        return this.http.get(this.itemsUrl)
+               .toPromise()
+               .then(response => <Item[]>response.json())
+               .catch(this.handleError);
     }
 
     addItem(name:string) {
-        this.items.push(new Item(name, false));
+
     }
 
+    private handleError(error: any) {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
+    }
 }

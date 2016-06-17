@@ -18,18 +18,19 @@ export class HomeComponent implements OnInit {
     selectedItem:Item;
     items:Array<Item>;
 
-    constructor(private _itemService:ItemService) {
-        this.newItem = new Item("", false);
-        this.items = _itemService.getItems();
-        this.calculateTodoCount();
-    }
+    constructor(private _itemService:ItemService) {}
 
     ngOnInit() {
-        console.log("Todo component initialized with " + this.items.length + " tasks.");
+        this.newItem = new Item(0, "", "", "");
+        this._itemService.getItems().then(items => {
+            console.log("Todo component initialized with " + items + " tasks.");
+            this.items = items;
+            this.calculateTodoCount();
+        });
     }
 
     calculateTodoCount() {
-        this.todoCount = this.items.filter(t => !t.done).length;
+        this.todoCount = this.items.length;
     }
 
     select(item:Item) {
@@ -37,6 +38,6 @@ export class HomeComponent implements OnInit {
     }
 
     add(item:Item) {
-        this.items.push(new Item(item.name, item.done));
+
     }
 }
