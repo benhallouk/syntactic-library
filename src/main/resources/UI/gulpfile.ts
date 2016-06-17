@@ -68,7 +68,7 @@ gulp.task("browserSync", function () {
     gulp.watch(["src/**/*.ts"], ['compile', 'reloadBrowserSync']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
     });
-    gulp.watch(["src/**/*.html", "src/**/*.css"], ['resources', 'reloadBrowserSync']).on('change', function (e) {
+    gulp.watch(["src/*.js", "src/**/*.html", "src/**/*.css"], ['resources', 'reloadBrowserSync']).on('change', function (e) {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
     });
     gulp.watch('src/**/*.scss', ['sass', 'resources', 'reloadBrowserSync'], function(e){
