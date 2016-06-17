@@ -9,13 +9,12 @@ const tslint = require('gulp-tslint');
 const sass = require('gulp-sass');
 const browserSync = require('browser-sync');
 
-const reload = browserSync.reload;
 
-gulp.task('clean', (cb) => {
+gulp.task("clean", (cb) => {
     return del(["../../../../target/classes/public"], cb);
 });
 
-gulp.task('tslint', () => {
+gulp.task("tslint", () => {
     return gulp.src("src/**/*.ts")
         .pipe(tslint())
         .pipe(tslint.report('prose'));
@@ -30,17 +29,12 @@ gulp.task("compile", ["tslint"], () => {
         .pipe(gulp.dest("../../../../target/classes/public"));
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', ["resources"], function () {
   gulp.src(['src/**/*.scss', '!node_modules/**/*.*'])
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(function(file) {
             return file.base;
     }));
-});
-
-gulp.task("resources", () => {
-    return gulp.src(["src/**/*", "!**/*.ts", "!**/*.scss"])
-        .pipe(gulp.dest("../../../../target/classes/public"));
 });
 
 gulp.task("libs", () => {
@@ -56,28 +50,20 @@ gulp.task("libs", () => {
         .pipe(gulp.dest("../../../../target/classes/public/lib"));
 });
 
-gulp.task('reloadBrowserSync', function () {
-    reload();
+gulp.task("resources", () => {
+    return gulp.src(["src/**/*", "!**/*.ts", "!**/*.scss"])
+        .pipe(gulp.dest("../../../../target/classes/public"));
 });
 
-gulp.task('browserSync', function () {
+gulp.task("reloadBrowserSync", function () {
+    browserSync.reload();
+});
+
+gulp.task("browserSync", function () {
     browserSync.init({
         port: 8000,
         proxy: "http://localhost:8080"
     });
-
-	function debounce(fn, delay) {
-	  var timer = null;
-	  return function () {
-		var context = this, args = arguments;
-		clearTimeout(timer);
-		timer = setTimeout(function () {
-		  fn.apply(context, args);
-		}, delay);
-	  };
-	}
-
-	//gulp.watch('../../../../target/**/*').on("change", debounce(reload, 2000));
 
     gulp.watch(["src/**/*.ts"], ['compile', 'reloadBrowserSync']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
@@ -90,19 +76,6 @@ gulp.task('browserSync', function () {
     });
 });
 
-
-gulp.task('watch', function () {
-    gulp.watch(["src/**/*.ts"], ['compile']).on('change', function (e) {
-        console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
-    });
-    gulp.watch(["src/**/*.html", "src/**/*.css"], ['resources']).on('change', function (e) {
-        console.log('Resource file ' + e.path + ' has been changed. Updating.');
-    });
-    gulp.watch('src/**/*.scss', ['sass', 'resources'], function(e){
-        console.log('Sass file ' + e.path + ' has been changed. Updating.');
-    });
-});
-
-gulp.task("build", ['compile', 'sass', 'resources', 'libs'], () => {
+gulp.task("build", ['compile', 'sass', 'libs', 'resources'], () => {
     console.log("Building the project ...");
 });
