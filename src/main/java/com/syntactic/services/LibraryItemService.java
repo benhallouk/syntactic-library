@@ -19,4 +19,9 @@ public class LibraryItemService
     {
         return libraryItemRepository.findAll();
     }
+
+    public LibraryItem Add(LibraryItem item)
+    {
+        return libraryItemRepository.save(item);
+    }
 }
