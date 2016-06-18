@@ -17,13 +17,13 @@ public class HomeController
     @Autowired
     LibraryItemService libraryItemService;
 
-    @RequestMapping("/items")
+    @RequestMapping(value = "/items", method = RequestMethod.GET)
     public List<LibraryItem> Index()
     {
         return libraryItemService.GetAll();
     }
 
-    @RequestMapping(value ="/item", method = RequestMethod.POST)
+    @RequestMapping(value ="/item", method = RequestMethod.PUT)
     public LibraryItem Add(@RequestBody LibraryItem item){
         return libraryItemService.Add(item);
     }
