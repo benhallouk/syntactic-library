@@ -28,8 +28,11 @@ Install node and angular dependencies
 -------------
 
 All the client depandancies including development tools can be installed using the command bellow:
-```sh
-npm install
+```csharp
+@{
+    var x = new Student();
+}
+<a href="hello world">@x.Name</a>
 ```
 `node_modules` and `typings` directories should be created during the install.
 
@@ -56,6 +59,8 @@ Want to file a bug, contribute some code, or improve documentation? Excellent! R
 ### License
 ----
 Copyright (c) 2016 Amine Benhallouk
+
+[![alt text](http://static.copyrighted.com/images/seal.gif "Copyrighted.com Registered & Protected 7PZF-PEB0-XEAB-U1BN")](http://www.copyrighted.com/copyrights/view/7pzf-peb0-xeab-u1bn)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
