@@ -33,8 +33,9 @@ gulp.task('sass', ["resources"], function () {
   gulp.src(['src/**/*.scss', '!node_modules/**/*.*'])
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(function(file) {
-            return file.base;
+            return file.base.replace("src/main/resources/UI/src", "target/classes/public");
     }));
+
 });
 
 gulp.task("libs", () => {

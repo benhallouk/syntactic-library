@@ -1,15 +1,19 @@
 import {Component} from "@angular/core";
 import {OnInit, Input} from "@angular/core";
 
-import {Item} from "../models/item";
-import {ItemService} from "../services/item-service";
-import {ItemComponent} from "./item.component";
+import {UserComponent} from "./components/user/user.component";
+import {SearchComponent} from "./components/search/search.component";
+import {TagsComponent} from "./components/tags/tags.component";
+import {BuddyComponent} from "./components/buddy/buddy.component";
+
+import {Item} from "./models/item";
+import {ItemService} from "./services/item-service";
 
 @Component({
     selector: 'item-list',
-    templateUrl: './app/home/components/item-list.html',
-    styleUrls: ['./app/home/components/item-list.css'],
-    directives: [ItemComponent],
+    templateUrl: './app/home/home.component.html',
+    styleUrls: ['./app/home/home.component.css'],
+    directives: [UserComponent, SearchComponent, TagsComponent, BuddyComponent],
     providers: [ItemService]
 })
 export class HomeComponent implements OnInit {
