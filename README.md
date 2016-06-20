@@ -49,7 +49,11 @@ npm run start
 ```
 The application should be displayed in the browser and the `gulp` tool will watch the client side changes and relead and sync the browser automatically.
 
-License
+### Want to help?
+----
+Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our guidelines for [contributing][contributing] and then check out one of our issues in the [hotlist](https://github.com/benhallouk/syntactic-library/labels/hotlist)
+
+### License
 ----
 Copyright (c) 2016 Amine Benhallouk
 
@@ -65,6 +69,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-
+[contributing]: http://github.com/benhallouk/syntactic-library/blob/master/CONTRIBUTING.md
 [STS is recommended]: <https://spring.io/tools>
 [Node js]: <https://nodejs.org/en/>
