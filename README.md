@@ -28,11 +28,8 @@ Install node and angular dependencies
 -------------
 
 All the client depandancies including development tools can be installed using the command bellow:
-```csharp
-@{
-    var x = new Student();
-}
-<a href="hello world">@x.Name</a>
+```sh
+npm install
 ```
 `node_modules` and `typings` directories should be created during the install.
 
