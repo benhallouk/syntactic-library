@@ -18,8 +18,50 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<docker.image.prefix>springio</docker.image.prefix>
   </properties>
-
+	<build>
+		 <plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+				  <descriptorRefs>
+					<descriptorRef>jar-with-dependencies</descriptorRef>
+				  </descriptorRefs>
+				  <archive>
+					<manifest>
+					  <addClasspath>true</addClasspath>
+					  <mainClass>com.syntactic.App</mainClass>
+					</manifest>
+				  </archive>
+				</configuration>
+				<executions>
+				  <execution>
+					<phase>package</phase>
+					<goals>
+					  <goal>single</goal>
+					</goals>
+				  </execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.2.3</version>
+				<configuration>
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>src/main/docker</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
+		 </plugins>
+	 </build>
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>

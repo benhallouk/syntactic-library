@@ -63,7 +63,7 @@ gulp.task("reloadBrowserSync", function () {
 gulp.task("browserSync", function () {
     browserSync.init({
         port: 8000,
-        proxy: "http://localhost:8080"
+        proxy: "http://localhost:8181"
     });
 
     gulp.watch(["src/**/*.ts"], ['compile', 'reloadBrowserSync']).on('change', function (e) {
