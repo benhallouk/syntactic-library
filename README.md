@@ -1,4 +1,4 @@
-# Syntactic Library
+# Syntactic Library [ ![Codeship Status for benhallouk/syntactic-library](https://codeship.com/projects/f0f42a60-1a89-0134-4629-56774cd00e66/status?branch=master)](https://codeship.com/projects/159370)
 Syntactic Library is an open source project that allow you to organise your code snippets and samples in one single location enabling you and your team to boost your productivity by providing very well organised code library that fits very nicely with your preffered IDE such as Visual Studio, Itellij, Eclips and the cutting edge editors like VS Code and Sublime
 
 
