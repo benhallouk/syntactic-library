@@ -11,7 +11,7 @@ To get started you will need:
 -------------
 - 10 Minutes
 - Java editor of your choice ([STS is recommended])
--  [Node js]
+- Latest node and npm version [Node js]
 
 To start clone the syntactic library
 -------------
@@ -27,7 +27,12 @@ cd syntactic-library\src\main\resources\UI
 Install node and angular dependencies
 -------------
 
-All the client depandancies including development tools can be installed using the command bellow:
+First ensure you have the latest `npm` version by running the command
+```sh
+npm update npm -g
+```
+
+Then install all the client depandancies including development tools using the command bellow:
 ```sh
 npm install
 ```
