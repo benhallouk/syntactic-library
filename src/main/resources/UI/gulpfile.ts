@@ -9,6 +9,7 @@ const tslint = require('gulp-tslint');
 const sass = require('gulp-sass');
 const browserSync = require('browser-sync');
 
+const testJasmine = require('gulp-jasmine');
 
 gulp.task("clean", (cb) => {
     return del(["../../../../target/classes/public"], cb);
@@ -81,4 +82,9 @@ gulp.task("browserSync", function () {
 
 gulp.task("build", ['compile', 'sass', 'libs', 'resources'], () => {
     console.log("Building the project ...");
+});
+
+gulp.task("test", ()=>{
+    gulp.src('spec/test.js')		 
+		.pipe(testJasmine());
 });
