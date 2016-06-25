@@ -14,4 +14,5 @@ public class LibraryItem
     private String title;
     private String author;
     private String category;
+    private String article;
 }
