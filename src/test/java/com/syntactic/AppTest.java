@@ -1,38 +1,58 @@
 package com.syntactic;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+import com.syntactic.controllers.HomeController;
+import com.syntactic.models.LibraryItem;
+import com.syntactic.services.LibraryItemService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static junit.framework.TestCase.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
+@SpringApplicationConfiguration(App.class)
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+    @Mock
+    private LibraryItemService libraryItemService;
+
+
+    @InjectMocks
+    private HomeController homeController;
+
+    @Test
+    public void HomeController_Index_Should_Return_All_Data()
     {
-        super( testName );
+        LibraryItem libraryItem = Mockito.mock(LibraryItem.class);
+        List<LibraryItem> allLibraryItems = Arrays.asList(libraryItem);
+
+        when(libraryItemService.GetAll()).thenReturn(allLibraryItems);
+
+        assertTrue( homeController.Index().equals(allLibraryItems));
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
+    @Test
+    public void HomeController_Add_Should_Add_Item()
     {
-        return new TestSuite( AppTest.class );
-    }
+        LibraryItem libraryItem = Mockito.mock(LibraryItem.class);
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+
+        Mockito.when(libraryItemService.Add(libraryItem)).thenReturn(libraryItem);
+
+        homeController.Add(libraryItem);
+
+        verify(libraryItemService).Add(libraryItem);
+
+        assertTrue(homeController.Add(libraryItem).equals(libraryItem));
     }
 }
