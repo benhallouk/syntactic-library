@@ -5,7 +5,7 @@ Syntactic Library is an open source project that allow you to organise your code
 ### Getting started with this project
 -------------
 
-This project written in Java spring boot, angular 2 with typescript and sass.
+This project is written in Java spring boot, angular 2 with typescript and sass.
 
 To get started you will need:
 -------------
