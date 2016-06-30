@@ -56,7 +56,7 @@ The application should be displayed in the browser and the `gulp` tool will watc
 
 ### Want to help?
 ----
-Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our guidelines for [contributing][contributing] and then check out one of our issues in the [hotlist](https://github.com/benhallouk/syntactic-library/labels/hotlist)
+Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our guidelines for [contributing][contributing] and then check out the issues we have in [our backlog](https://github.com/benhallouk/syntactic-library/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc)
 
 ### License
 ----
